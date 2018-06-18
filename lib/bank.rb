@@ -1,4 +1,5 @@
 require 'deposit_money'
+require 'withdraw_money'
 
 # This class is a Command & Control Class for the application
 class Bank
