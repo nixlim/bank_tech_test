@@ -1,3 +1,5 @@
+require 'deposit_money'
+
 # This class is a Command & Control Class for the application
 class Bank
   def initialize(

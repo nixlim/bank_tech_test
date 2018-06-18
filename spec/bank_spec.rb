@@ -23,8 +23,12 @@ describe Bank do
       expect(deposit_money_instance_double)
         .to have_received(:add).with(10)
     end
-    it 'should throw an error if the #deposit amount is 0 or less' do
+    it 'should throw an error if the #deposit amount is less than 0' do
       expect { subject.deposit(-10) }
+        .to raise_error('The amount must be greater than 0')
+    end
+    it 'should throw an error if the #deposit amount is 0 ' do
+      expect { subject.deposit(0) }
         .to raise_error('The amount must be greater than 0')
     end
   end

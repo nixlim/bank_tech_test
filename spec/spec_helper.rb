@@ -1,7 +1,6 @@
 require 'simplecov'
 require 'simplecov-console'
 require 'rspec'
-require 'bank'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
     [SimpleCov::Formatter::Console,
