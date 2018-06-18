@@ -5,12 +5,14 @@ describe Bank do
     described_class.new(
       deposit_money_instance_double,
       withdraw_money_instance_double,
-      ledger_instance_double
+      ledger_instance_double,
+      printer_statement_double
     )
   }
   let(:deposit_money_instance_double) { spy :deposit_money_double }
   let(:withdraw_money_instance_double) { spy :withdraw_money_double }
   let(:ledger_instance_double) { spy :ledger_double, balance: 10 }
+  let(:printer_statement_double) { spy :printer_statement_double }
 
   describe '#deposit' do
     it 'should take an amount to be deposited' do
@@ -40,7 +42,7 @@ describe Bank do
       expect { subject.withdraw(-10) }
         .to raise_error('The amount must be greater than 0')
     end
-    it 'should check that the withdrawal does not exceed the available
+    it 'should check with Ledger Class that the withdrawal does not exceed the available
  balance' do
       subject.withdraw(5)
       expect(ledger_instance_double).to have_received(:balance)
@@ -48,8 +50,9 @@ describe Bank do
   end
 
   describe '#statement' do
-    it 'should respond to the #statement method' do
-      expect(subject).to respond_to(:statement)
+    it 'should call the StatementPrinter Class to print the statement' do
+      subject.statement
+      expect(printer_statement_double).to have_received(:print_statement)
     end
   end
 end

@@ -3,11 +3,13 @@ class Bank
   def initialize(
       deposits_processor = DepositMoney.new,
       withdrawals_processor = WithdrawMoney.new,
-      ledger = Ledger.new
+      ledger = Ledger.new,
+      printer = StatementPrinter.new
     )
     @deposits_processor = deposits_processor
     @withdrawals_processor = withdrawals_processor
     @ledger = ledger
+    @printer = printer
   end
 
   def deposit(amount)
@@ -22,7 +24,7 @@ class Bank
   end
 
   def statement
-    # code will go here
+    @printer.print_statement
   end
 
   private
