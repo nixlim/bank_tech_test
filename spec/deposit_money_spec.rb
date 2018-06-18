@@ -1,12 +1,15 @@
 require 'deposit_money'
 
 describe DepositMoney do
+  let(:ledger_instance_double) { spy :ledger_double, balance: 10 }
+
   describe '#add' do
-    it 'should respond to #add method' do
-      expect(subject).to respond_to(:add)
-    end
     it 'should take an amount as an argument' do
-      expect(subject).to respond_to(:add).with(1).argument
+      expect(subject).to respond_to(:add).with(2).arguments
+    end
+    it 'should credit the Ledger Class' do
+      subject.add(10, ledger_instance_double)
+      expect(ledger_instance_double).to have_received(:credit).with(10)
     end
   end
 
