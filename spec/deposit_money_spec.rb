@@ -2,7 +2,7 @@ require 'deposit_money'
 
 describe DepositMoney do
   let(:ledger_instance_double) { spy :ledger_double, balance: 10 }
-  let(:date) { Time.new.strftime("%d/%m/%Y") }
+  let(:date) { Time.new.strftime("%d/%m/%Y %H:%M") }
 
   describe '#add' do
     it 'should take an amount as an argument' do

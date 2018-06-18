@@ -1,14 +1,13 @@
 class DepositMoney
 
   def add(amount, ledger)
-    ledger.credit(amount, get_date)
+    ledger.credit(amount, get_date_time)
   end
 
   private
 
-  def get_date
-    @date = Time.new.strftime("%d/%m/%Y")
-    p @date
+  def get_date_time
+    Time.new.strftime("%d/%m/%Y %H:%M")
   end
 
 end
