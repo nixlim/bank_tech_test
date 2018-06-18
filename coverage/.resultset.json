@@ -9,6 +9,18 @@
         null
       ]
     },
-    "timestamp": 1529321373
+    "timestamp": 1529321673
+  },
+  "RSpec": {
+    "coverage": {
+      "/Users/nixlim/Sync/PROJECTS/bank_tech_test/spec/bank_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1529321851
   }
 }
