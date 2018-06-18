@@ -30,7 +30,7 @@ describe Bank do
   describe '#withdraw' do
 
     it 'should respond to withdraw method' do
-
+      expect(subject).to respond_to(:withdraw)
     end
   end
 
