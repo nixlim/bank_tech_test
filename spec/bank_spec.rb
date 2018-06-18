@@ -7,30 +7,39 @@ describe Bank do
 
   describe '#deposit' do
 
-    it 'should respond to #deposit method' do
-      expect(subject).to respond_to(:deposit)
-    end
-
     it 'should take an amount to be deposited' do
       expect(subject).to respond_to(:deposit).with(1).argument
     end
 
-    it 'should call Depositor Class on deposit' do
+    it 'should call DepositMoney Class on deposit' do
       subject.deposit(10)
       expect(deposit_money_instance_double).to have_received(:add).with(10)
     end
 
     it 'should throw an error if the #deposit amount is 0 or less' do
       expect{subject.deposit(-10)}
-          .to raise_error("The deposit amount must be greater than 0")
+          .to raise_error("The amount must be greater than 0")
     end
 
   end
 
   describe '#withdraw' do
 
-    it 'should respond to withdraw method' do
-      expect(subject).to respond_to(:withdraw)
+    it 'should take an amount to be withdrawn' do
+      expect(subject).to respond_to(:withdraw).with(1).argument
+    end
+
+    it 'should call WithdrawMoney Class on withdrawal' do
+      subject.withdraw(10)
+      expect(withdraw_money_instance_double).to have_received(:add).with(10)
+    end
+
+    it 'should raise an error if the #withdraw amount is less than 0' do
+      expect{ subject.withdraw(-10) }.to raise_error("The amount must be greater than 0")
+    end
+
+    it 'should check that the withdrawal does not exceed the available balance' do
+
     end
   end
 
