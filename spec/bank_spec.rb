@@ -1,9 +1,14 @@
 require 'bank'
 
 describe Bank do
-  let(:subject){described_class.new(deposit_money_instance_double, withdraw_money_instance_double)}
-  let(:deposit_money_instance_double) {spy :deposit_money_double}
-  let(:withdraw_money_instance_double) {spy :withdraw_money_double}
+  let(:subject){ described_class.new(
+      deposit_money_instance_double,
+      withdraw_money_instance_double,
+      ledger_instance_double
+  ) }
+  let(:deposit_money_instance_double) { spy :deposit_money_double }
+  let(:withdraw_money_instance_double) { spy :withdraw_money_double }
+  let(:ledger_instance_double) { spy :ledger_double, balance: 10 }
 
   describe '#deposit' do
 
@@ -39,7 +44,8 @@ describe Bank do
     end
 
     it 'should check that the withdrawal does not exceed the available balance' do
-
+      subject.withdraw(5)
+      expect(ledger_instance_double).to have_received(:balance)
     end
   end
 
