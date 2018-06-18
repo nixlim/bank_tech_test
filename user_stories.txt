@@ -1,0 +1,23 @@
+As a Customer,
+So that I can keep my money safe
+I would like to be able to deposit cash in Bank
+
+As a Customer 
+So that I can get access to the money I deposited
+I would like to withdraw the cash from the Bank
+
+As a Customer
+So that I can see what is happening with my money
+I would like to print out a statement of transactions
+
+As a Customer
+So that I can see how much money I have left
+I would like my statement to show balance after each transaction
+
+As a Customer
+So that I can see what transaction took place when
+I would like my statement to show the date of entries
+
+As a Customer
+So that I can see the context of my transactions
+I would like my statement to show latest entries first
