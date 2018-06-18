@@ -16,17 +16,17 @@ class Bank
 
   def deposit(amount)
     check_for_incorrect_amount(amount)
-    @deposits_processor.add(amount)
+    @deposits_processor.add(amount, @ledger)
   end
 
   def withdraw(amount)
     check_for_incorrect_amount(amount)
     check_for_sufficient_balance(amount)
-    @withdrawals_processor.add(amount)
+    @withdrawals_processor.add(amount, @ledger)
   end
 
   def statement
-    @printer.print_statement
+    @printer.print_statement(@ledger)
   end
 
   private
