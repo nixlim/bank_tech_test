@@ -1,31 +1,28 @@
-require_relative 'deposit_money'
-require_relative 'withdraw_money'
 require_relative 'ledger'
 require_relative 'statement_printer'
 
 # This class is a Command & Control Class for the application
 class Bank
   def initialize(
-      deposits_processor = DepositMoney.new,
-      withdrawals_processor = WithdrawMoney.new,
       ledger = Ledger.new,
-      printer = StatementPrinter.new
+      printer = StatementPrinter.new,
+      timestamp_creator = Time
     )
-    @deposits_processor = deposits_processor
-    @withdrawals_processor = withdrawals_processor
     @ledger = ledger
     @printer = printer
+    @timestamp_creator = timestamp_creator
   end
 
   def deposit(amount)
-    check_for_incorrect_amount(amount)
-    @deposits_processor.add(amount, @ledger)
+    check_for_positive_amount(amount)
+    @ledger.credit(amount, @timestamp_creator.new)
   end
 
   def withdraw(amount)
-    check_for_incorrect_amount(amount)
-    check_for_sufficient_balance(amount)
-    @withdrawals_processor.add(amount, @ledger)
+    check_for_positive_amount(amount)
+    raise 'The balance is insufficient for withdrawal' unless
+      @ledger.balance >= amount
+    @ledger.debit(amount, @timestamp_creator.new)
   end
 
   def statement
@@ -34,13 +31,8 @@ class Bank
 
   private
 
-  def check_for_incorrect_amount(amount)
+  def check_for_positive_amount(amount)
     raise 'The amount must be greater than 0' unless
         amount.positive?
-  end
-
-  def check_for_sufficient_balance(amount)
-    raise 'The balance is insufficient for withdrawal' unless
-        @ledger.balance >= amount
   end
 end

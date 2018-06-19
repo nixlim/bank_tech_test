@@ -7,19 +7,17 @@ class Ledger
     @balance = 0
   end
 
-  def debit(amount, entry_date)
+  def debit(amount, timestamp)
     @transactions_record.push({
-      entry_date: entry_date.split(' ')[0],
-      entry_time: entry_date.split(' ')[1],
+      timestamp: timestamp,
       credit: '',
       debit: amount,
       balance: calculate_balance(-amount) })
   end
 
-  def credit(amount, entry_date)
+  def credit(amount, timestamp)
     @transactions_record.push({
-      entry_date: entry_date.split(' ')[0],
-      entry_time: entry_date.split(' ')[1],
+      timestamp: timestamp,
       credit: amount,
       debit: '',
       balance: calculate_balance(amount) })
