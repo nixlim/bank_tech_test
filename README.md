@@ -84,7 +84,7 @@ To play around with this implementation, do the following:
 3. Run `bundle install`
 4. Fire up your favourite REPL (I prefer PRY), but IRB would do.
 5. Then:
-- type `require './lib/bank.rb` (this will load up the bank.rb file (main application file) into the REPL)
+- type `require './lib/bank.rb'` (this will load up the bank.rb file (main application file) into the REPL)
 - create new bank like so `bank = Bank.new`
 - now you can:
  
