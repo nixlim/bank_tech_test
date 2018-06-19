@@ -13,8 +13,8 @@ describe StatementPrinter do
     end
     it 'should print the statement to the screen with a heading' do
       expect(STDOUT).to receive(:puts).with('date || credit || debit || balance')
-      expect(STDOUT).to receive(:puts).with('19/06/2018 || 10 ||  || 10')
       expect(STDOUT).to receive(:puts).with('19/06/2018 ||  || 10 || 0')
+      expect(STDOUT).to receive(:puts).with('19/06/2018 || 10 ||  || 10')
       subject.print_statement(ledger)
     end
 

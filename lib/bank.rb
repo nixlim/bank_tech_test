@@ -1,7 +1,7 @@
-require 'deposit_money'
-require 'withdraw_money'
-require 'ledger'
-require 'statement_printer'
+require_relative 'deposit_money'
+require_relative 'withdraw_money'
+require_relative 'ledger'
+require_relative 'statement_printer'
 
 # This class is a Command & Control Class for the application
 class Bank
