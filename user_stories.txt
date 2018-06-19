@@ -16,7 +16,7 @@ I would like my statement to show balance after each transaction
 
 As a Customer
 So that I can see what transaction took place when
-I would like my statement to show the date of entries
+I would like my statement to show the date of each transaction
 
 As a Customer
 So that I can see the context of my transactions
