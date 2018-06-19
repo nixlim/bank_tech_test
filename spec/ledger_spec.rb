@@ -1,6 +1,7 @@
 require 'ledger'
 
 describe Ledger do
+
   describe '@transactions_record' do
     it 'should have an empty ledger array on initialisation' do
       expect(subject.instance_variable_get(:@transactions_record))
@@ -9,10 +10,12 @@ describe Ledger do
         .to be_empty
     end
   end
+
   describe '#debit' do
     it 'should respond to the #debit method' do
       expect(subject).to respond_to(:debit).with(2).arguments
     end
+
     it 'should push amount and date of entry into @transactions record array' do
       subject.debit(10, Time.new.strftime("%d/%m/%Y %H:%M"))
       expect(subject.instance_variable_get(:@transactions_record))
@@ -39,6 +42,7 @@ describe Ledger do
           debit: '',
           balance: 10})
     end
+
   end
 
   describe '#balance method/attribute' do
