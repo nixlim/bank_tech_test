@@ -1,3 +1,4 @@
+# This Class records transactions
 class Ledger
   attr_reader :balance, :transactions_record
 
@@ -12,7 +13,7 @@ class Ledger
       entry_time: entry_date.split(' ')[1],
       credit: '',
       debit: amount,
-      balance: calculate_balance(-amount)})
+      balance: calculate_balance(-amount) })
   end
 
   def credit(amount, entry_date)
@@ -21,7 +22,7 @@ class Ledger
       entry_time: entry_date.split(' ')[1],
       credit: amount,
       debit: '',
-      balance: calculate_balance(amount)})
+      balance: calculate_balance(amount) })
   end
 
   private
