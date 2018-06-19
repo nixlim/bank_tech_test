@@ -2,8 +2,8 @@ require 'statement_printer'
 
 describe StatementPrinter do
   let(:ledger) {double :ledger_double, transactions_record: [
-    {:entry_date=>"19/06/2018", :entry_time=>"12:51", :credit=>10, :debit=>"", :balance=>10},
-    {:entry_date=>"19/06/2018", :entry_time=>"12:53", :credit=>"", :debit=>10, :balance=>0}
+    {:timestamp=> Time.new(2018,6,19), :credit=>10, :debit=>"", :balance=>10},
+    {:timestamp=>Time.new(2018,6,19), :credit=>"", :debit=>10, :balance=>0}
   ]}
 
   describe '#print_statement' do
