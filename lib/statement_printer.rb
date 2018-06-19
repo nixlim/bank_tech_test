@@ -3,7 +3,7 @@ class StatementPrinter
   def print_statement(ledger)
     puts header
     ledger.transactions_record.reverse.each { |record|
-      puts "#{record[:entry_date]} || #{formatter(record[:credit])} || #{formatter(record[:debit])} || #{formatter(record[:balance])}"
+      puts "#{time_formatter(record[:timestamp])} || #{number_formatter(record[:credit])} || #{number_formatter(record[:debit])} || #{number_formatter(record[:balance])}"
     }
   end
 
@@ -13,8 +13,12 @@ class StatementPrinter
     'date || credit || debit || balance'
   end
 
-  def formatter(value)
+  def number_formatter(value)
     value === '' ? value : '%.2f' % value
+  end
+
+  def time_formatter(timestamp)
+    timestamp.strftime("%d/%m/%Y")
   end
 
 end

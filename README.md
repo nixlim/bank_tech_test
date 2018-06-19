@@ -68,7 +68,7 @@ From the User Stories above, I created the following DOM table:
 
 ### Diagramming the Structure
 
-Drawing on the OOP practices, I have created the following diagram for my program:
+Drawing on my understanding of the OOP practices, I have created the following diagram for my program:
 
 ![Program Diagram](img/Program_Structure_Diagram.png)
 
@@ -82,7 +82,7 @@ To play around with this implementation, do the following:
 1. Fork and clone the repo
 2. `cd` into the directory where you placed the cloned repo
 3. Run `bundle install`
-4. Fire up your favourite REPL (I prefer PRY), but IRB would do.
+4. Fire up your favourite REPL (I prefer PRY, but IRB would do).
 5. Then:
 - type `require './lib/bank.rb'` (this will load up the bank.rb file (main application file) into the REPL)
 - create new bank like so `bank = Bank.new`
@@ -115,10 +115,10 @@ The testing can be done by running `rspec` in the command line
 
 The output should be:
 ```
-22 examples, 0 failures, 22 passed
+16 examples, 0 failures, 16 passed
 ```
 ```
-COVERAGE: 100.00% -- 148/148 lines in 10 files
+COVERAGE: 100.00% -- 105/105 lines in 6 files
 ```
 
 ### Break down of tests
@@ -129,12 +129,12 @@ The tests breakdown is as follows
 Bank
   #deposit
     should take an amount to be deposited
-    should call DepositMoney Class on deposit and supply amount and ledger
     should throw an error if the #deposit amount is less than 0
     should throw an error if the #deposit amount is 0
+    should credit the Ledger Class
   #withdraw
     should take an amount to be withdrawn
-    should call WithdrawMoney Class on withdrawal and supply amount and ledger
+    should credit the Ledger Class
     should raise an error if the #withdraw amount is less than 0
     should check with Ledger Class that the withdrawal does not exceed the available
  balance
@@ -142,32 +142,18 @@ Bank
   #statement
     should call the StatementPrinter Class and provide a ledger
 
-DepositMoney
-  #add
-    should take an amount as an argument
-    should credit the Ledger Class
-
 Ledger
-  @transactions_record
-    should have an empty ledger array on initialisation
   #debit
     should respond to the #debit method
-    should push amount and date of entry into @transactions record array
+    should push amount and transaction timestamp into @transactions record array
   #credit
     should respond to the #credit method
-    should push amount and date of entry into @transactions record array
-  #balance method/attribute
-    should respond to #balance and have @balance var
+    should push amount and transaction timestamp into @transactions record array
 
 StatementPrinter
   #print_statement
     should respond to #print_statement with 1 argument
     should print the statement to the screen with a heading
-
-WithdrawMoney
-  #add
-    should take an amount as an argument
-    should credit the Ledger Class
 ```
 
 ### Coding Style Tests
@@ -175,14 +161,15 @@ WithdrawMoney
 Rubocop is used to monitor code style (which detects one offence at the moment - a line being too long on the statement printer.)
 
 ```
-Inspecting 6 files
-....C.
+Inspecting 4 files
+...C
 
 Offenses:
 
-lib/statement_printer.rb:6:81: C: Metrics/LineLength: Line is too long. [134/80]
+lib/statement_printer.rb:6:81: C: Metrics/LineLength: Line is too long. [170/80]
 
-6 files inspected, 1 offense detected
+4 files inspected, 1 offense detected
+
 
 ```
 
