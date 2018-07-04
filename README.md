@@ -1,4 +1,5 @@
 # Bank Tech Test
+[![BCH compliance](https://bettercodehub.com/edge/badge/nixlim/bank_tech_test?branch=master)](https://bettercodehub.com/)
 
 This is a submission for a practice tech test at the Makers Academy. 
 
